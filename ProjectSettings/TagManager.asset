@@ -6,6 +6,7 @@ TagManager:
   tags:
   - BotonStart
   - Suelo
+  - Estrella
   layers:
   - Default
   - TransparentFX

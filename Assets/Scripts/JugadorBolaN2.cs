@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class JugadorBola : MonoBehaviour
+public class JugadorBolaN2 : MonoBehaviour
 {
 
     public Camera camara;
@@ -17,15 +17,13 @@ public class JugadorBola : MonoBehaviour
     private Vector3 offSet;
     private float ValX, ValZ;
     private Vector3 DireccionActual;
-    private Vector3 ultimaPosicionGeneracionSuelo;
     // Start is called before the first frame update
     void Start()
     {
-        GameManager.instance.TotalEstrellas = 0;
+        Contador.text = "" + GameManager.instance.TotalEstrellas;
         offSet = camara.transform.position;
         CrearSueloInicial();
         DireccionActual= Vector3.forward;
-        ultimaPosicionGeneracionSuelo = transform.position;
     }
 
     // Update is called once per frame
@@ -42,13 +40,6 @@ public class JugadorBola : MonoBehaviour
             // Carga la escena "SampleScene" o la escena que desees reiniciar
             SceneManager.LoadScene("SampleScene");
         }
-
-        if (Mathf.Abs(transform.position.x - ultimaPosicionGeneracionSuelo.x) >= 6.0f ||
-            Mathf.Abs(transform.position.z - ultimaPosicionGeneracionSuelo.z) >= 6.0f)
-        {
-            GenerarSuelo(); // Método para generar el suelo
-            ultimaPosicionGeneracionSuelo = transform.position; // Actualiza la última posición de generación
-        }
     }
 
     private void OnCollisionExit(Collision other){
@@ -58,32 +49,23 @@ public class JugadorBola : MonoBehaviour
         }
     }
 
-    void GenerarSuelo()
+    IEnumerator BorrarSuelo(GameObject suelo)
     {
         float aleatorio = Random.Range(0.0f , 1.0f);
         if (aleatorio > 0.5f)
         {
-            ValX +=6.0f;
+            ValX +=4.5f;
         }
         else
         {
-            ValZ+=6.0f;
+            ValZ+=4.5f;
         }
-
         Instantiate(suelo, new Vector3(ValX, 0, ValZ), Quaternion.identity);
-        
         float aleatorio2 = Random.Range(0.0f , 1.0f);
-            if (aleatorio2 > 0.7f)
-            {
-                Instantiate(estrella, new Vector3(ValX, 1, ValZ), Quaternion.Euler(45, 45, 45));
-            }
-
-    }
-
-
-
-    IEnumerator BorrarSuelo(GameObject suelo)
-    {
+        if (aleatorio2 > 0.7f)
+        {
+            Instantiate(estrella, new Vector3(ValX, 1, ValZ), Quaternion.Euler(45, 45, 45));
+        }
 
         yield return new WaitForSeconds(2);
         suelo.gameObject.GetComponent<Rigidbody>().isKinematic = false;
@@ -106,19 +88,19 @@ public class JugadorBola : MonoBehaviour
 
     void CrearSueloInicial()
     {
-        for(int i =0; i<3; i++){
-            ValZ +=6.0f;
+       for(int i =0; i<3; i++){
+            ValZ +=4.5f;
             Instantiate(suelo, new Vector3(ValX, 0, ValZ),Quaternion.identity);
         }
         for(int i =0; i<15; i++){
         float aleatorio = Random.Range(0.0f , 1.0f);
         if (aleatorio > 0.5f)
         {
-            ValX +=6.0f;
+            ValX +=4.5f;
         }
         else
         {
-            ValZ+=6.0f;
+            ValZ+=4.5f;
         }
             Instantiate(suelo, new Vector3(ValX, 0, ValZ),Quaternion.identity);
         float aleatorio2 = Random.Range(0.0f , 1.0f);
@@ -128,6 +110,7 @@ public class JugadorBola : MonoBehaviour
         }
         }
     }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Estrella"))
@@ -136,11 +119,10 @@ public class JugadorBola : MonoBehaviour
             GameManager.instance.AñadirEstrella();
             Contador.text = "" + GameManager.instance.TotalEstrellas;
             Destroy(other.gameObject);
-
-            if(GameManager.instance.TotalEstrellas == 5){
-                SceneManager.LoadScene("Nivel2");
+            if(GameManager.instance.TotalEstrellas==12){
+                SceneManager.LoadScene("Nivel3");
+                Contador.text = "12";
             }
-
         }
     }
 }

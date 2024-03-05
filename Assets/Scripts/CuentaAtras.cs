@@ -7,21 +7,35 @@ using UnityEngine.UI;
 public class CuentaAtras : MonoBehaviour
 {
 
-    private Button boton;
+    public Button botonStart;
+    public Button botonTerminar;
+    public Image Puntos;
+    public Text NPuntos;
     public Image imagen;
     public Sprite[] numeros;
     // Start is called before the first frame update
     void Start()
     {
-        boton = GameObject.FindAnyObjectByType<Button>();
-        boton.onClick.AddListener(Empezar);
+        botonStart.onClick.AddListener(Empezar);
+        botonTerminar.onClick.AddListener(TerminarJuego);
     }
 
     void Empezar()
     {
         imagen.gameObject.SetActive(true);
-        boton.gameObject.SetActive(false);
+        botonStart.gameObject.SetActive(false);
+        botonTerminar.gameObject.SetActive(false);
+        Puntos.gameObject.SetActive(false);
+        NPuntos.gameObject.SetActive(false);
         StartCoroutine(Cuentaatras());
+    }
+
+    void TerminarJuego()
+    {
+        Application.Quit();
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #endif
     }
 
     IEnumerator Cuentaatras()
@@ -32,8 +46,9 @@ public class CuentaAtras : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
 
-        SceneManager.LoadScene("Escena1");
+        SceneManager.LoadScene("Nivel1");
     }
+    
 
     // Update is called once per frame
     void Update()

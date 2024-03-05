@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class JugadorBola : MonoBehaviour
+public class JugadorBolaN2 : MonoBehaviour
 {
 
     public Camera camara;
@@ -46,11 +46,11 @@ public class JugadorBola : MonoBehaviour
         float aleatorio = Random.Range(0.0f , 1.0f);
         if (aleatorio > 0.5f)
         {
-            ValX +=6.0f;
+            ValX +=4.5f;
         }
         else
         {
-            ValZ+=6.0f;
+            ValZ+=4.5f;
         }
         Instantiate(suelo, new Vector3(ValX, 0, ValZ), Quaternion.identity);
         float aleatorio2 = Random.Range(0.0f , 1.0f);
@@ -80,8 +80,8 @@ public class JugadorBola : MonoBehaviour
 
     void CrearSueloInicial()
     {
-        for(int i =0; i<3; i++){
-            ValZ +=6.0f;
+        for(int i =0; i<5; i++){
+            ValZ +=4.5f;
             Instantiate(suelo, new Vector3(ValX, 0, ValZ),Quaternion.identity);
         }
     }
@@ -93,11 +93,9 @@ public class JugadorBola : MonoBehaviour
             GameManager.instance.AñadirEstrella();
             Contador.text = "Contador = " + GameManager.instance.TotalEstrellas;
             Destroy(other.gameObject);
-
-            if(GameManager.instance.TotalEstrellas==3){
+            if(GameManager.instance.TotalEstrellas==12){
                 SceneManager.LoadScene("Nivel2");
             }
-
         }
     }
 }

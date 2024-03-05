@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 263466159}
   - component: {fileID: 263466158}
   - component: {fileID: 263466157}
-  - component: {fileID: 263466156}
+  - component: {fileID: 263466162}
   m_Layer: 0
   m_Name: Jugador
   m_TagString: Untagged
@@ -140,23 +140,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &263466156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 263466155}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ba8ae178e247f44f81d85e89d01ae09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  camara: {fileID: 1849658669}
-  suelo: {fileID: 4282945717200509453, guid: aa632c13eb199b74eaed113dc67a3cf1, type: 3}
-  estrella: {fileID: 127666195293921354, guid: 14b23c65168c70a4a8ed52a282bbb492, type: 3}
-  velocidad: 5
-  Contador: {fileID: 1039145324}
 --- !u!54 &263466157
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -227,7 +210,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3a15e9ac29f9d44499207d8a77f9273c, type: 2}
+  - {fileID: 2100000, guid: 600f2c55f835ce24bb537f54f38d1161, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -272,6 +255,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &263466162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263466155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba8ae178e247f44f81d85e89d01ae09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camara: {fileID: 1849658669}
+  suelo: {fileID: 4282945717200509453, guid: aa632c13eb199b74eaed113dc67a3cf1, type: 3}
+  estrella: {fileID: 127666195293921354, guid: 14b23c65168c70a4a8ed52a282bbb492, type: 3}
+  velocidad: 5
+  Contador: {fileID: 1039145324}
 --- !u!1 &1039145322
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,7 +342,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Contador = '
+  m_Text: Contador = 0
 --- !u!222 &1039145325
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -504,8 +504,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1849658667}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.16573103, y: 0.0029585094, z: -0.0004971936, w: 0.9861665}
-  m_LocalPosition: {x: 0.07461795, y: 3.0426042, z: -11.067194}
+  m_LocalRotation: {x: -0.41269374, y: -0.00027547963, z: 0.00012472106, w: -0.9108698}
+  m_LocalPosition: {x: -0.0035218745, y: 6.6375585, z: -5.8213253}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
